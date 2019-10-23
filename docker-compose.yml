@@ -3,17 +3,18 @@ version: "3.7"
 services:
 
   grafana:
-    image: grafana/grafana:6.3.6
+    image: "grafana/grafana-arm32v7-linux:dev-musl"
     ports: 
-      - 3000:3000
-    depends_on:
-      - influxdb
+      - "3000:3000"
     env_file: .env/env.grafana
-
+    volumes:
+      - "grafana-storage:/var/lib/grafana"
 
   influxdb:
     image: arm32v7/influxdb
     ports:
-      - 8086:8086
+      - "8086:8086"
     env_file: .env/env.influxdb
-    
+
+volumes:
+  grafana-storage:
