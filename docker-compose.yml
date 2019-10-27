@@ -1,6 +1,24 @@
 version: "3.7"
 
-services:
+services: 
+
+  influxdb:
+    image: arm32v7/influxdb
+    ports: 
+      - "8086:8086"
+    env_file: .env/env.influxdb
+    volumes:
+      - "influxdb-storage:/var/lib/influxdb"
+
+  telegraf:
+    image: arm32v7/telegraf
+    volumes:
+      - type: bind
+        source: ./telegraf.conf
+        target: /etc/telegraf/telegraf.conf
+        read_only: true
+    depends_on:
+      - influxdb
 
   grafana:
     image: "grafana/grafana-arm32v7-linux:dev-musl"
@@ -9,12 +27,10 @@ services:
     env_file: .env/env.grafana
     volumes:
       - "grafana-storage:/var/lib/grafana"
-
-  influxdb:
-    image: arm32v7/influxdb
-    ports:
-      - "8086:8086"
-    env_file: .env/env.influxdb
+    depends_on:
+      - influxdb
+      - telegraf
 
 volumes:
   grafana-storage:
+  influxdb-storage:
