@@ -24,4 +24,6 @@ docker-compose up
 - [ ] what is best practice for persistence of grafana and influxdb data?
 - [ ] see what other interesting stuff we can monitor on the Pi
 - [ ] what other weird stuff can we monitor/visualise from public APIs via influxdb HTTP interface?
-- [ ] dip toe into MQTT input for Telegraf
+- [ ] dip toe into MQTT input for telegraf
+- [ ] telegraf should probably be on the host and not just monitoring one docker container... :flushed:
+- [ ] unrelated but also work out how to get zsh working on Pi and over SSH :computer:
