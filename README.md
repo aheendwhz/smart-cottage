@@ -15,15 +15,16 @@ docker-compose up
 - [x] see https://github.com/nicolargo/docker-influxdb-grafana/blob/master/docker-compose.yml for help
 - [x] get grafana and influxdb communicating
 - [x] eventually, make Dockerfiles for all services, e.g. have a grafana dashboard json config copied in during image build, etc.
-- [ ] allow editing via vscode over SSH
+- [x] allow editing via vscode over SSH
 - [x] test getting data into influx with telegraf
 - [x] https://github.com/grafana/grafana/issues/19585
-- [ ] check retention policy, is autogen ok?
+- [x] check retention policy, is autogen ok?
+- [x] expand retention policy and implement continuous query to aggregate data over longer periods (e.g. every 10 mins), then implement a longer retention policy for this aggregated data
 - [ ] create more dashboard widgets, research commonly-used queries/visualisations
-- [ ] check best way to store data, do volumes need to be reconfigured?
-- [ ] what is best practice for persistence of grafana and influxdb data?
+- [x] check best way to store data, do volumes need to be reconfigured?
+- [x] what is best practice for persistence of grafana and influxdb data?
 - [ ] see what other interesting stuff we can monitor on the Pi
 - [ ] what other weird stuff can we monitor/visualise from public APIs via influxdb HTTP interface?
 - [ ] dip toe into MQTT input for telegraf
-- [ ] telegraf should probably be on the host and not just monitoring one docker container... :flushed:
+- [x] telegraf should probably be on the host and not just monitoring one docker container... :flushed:
 - [ ] unrelated but also work out how to get zsh working on Pi and over SSH :computer:
