@@ -12,10 +12,17 @@ services:
 
   telegraf:
     image: arm32v7/telegraf
+    env_file: .env/env.telegraf
     volumes:
+      # read telegraf config from host
       - type: bind
         source: ./telegraf.conf
         target: /etc/telegraf/telegraf.conf
+        read_only: true
+      # monitor RPi's /proc, not container's
+      - type: bind
+        source: /proc
+        target: /host/proc
         read_only: true
     depends_on:
       - influxdb
